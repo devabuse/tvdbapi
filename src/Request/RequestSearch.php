@@ -10,7 +10,7 @@ use TVDB\Authentication\Authentication;
  * @url https://api.thetvdb.com/swagger#/Series
  * @package TVDB\Request
  */
-class RequestSearch extends Request implements Requestable {
+class RequestSearch extends Request {
     public function __construct(Authentication $authentication, Client $client) {
         parent::__construct($authentication, $client);
     }

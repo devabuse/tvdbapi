@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 use TVDB\Authentication\Authentication;
 
-class Request {
+abstract class Request {
     const BASE_URL = "https://api.thetvdb.com";
 
     /**
@@ -31,6 +31,27 @@ class Request {
         $this->authentication = $authentication;
         $this->client = $client;
     }
+
+    /**
+     * Return the method required to perform the request. TVDB api uses POST and GET requests
+     *
+     * @return string
+     */
+    abstract public function getMethod();
+
+    /**
+     * Return the path for this request
+     *
+     * @return string
+     */
+    abstract public function getPath();
+
+    /**
+     * Return a set of default paramaters that always need to be provided for a functional API call
+     *
+     * @return array
+     */
+    abstract public function getDefaultParams();    
 
     /**
      * Performs the actual request using methods implemented from extended classes

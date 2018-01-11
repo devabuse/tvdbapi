@@ -10,7 +10,7 @@ use TVDB\Authentication\Authentication;
  * @url https://api.thetvdb.com/swagger#/Series
  * @package TVDB\Request
  */
-class RequestSeriesEpisodes extends Request implements Requestable {
+class RequestSeriesEpisodes extends Request {
     /**
      * @var int series id
      */
