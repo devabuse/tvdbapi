@@ -51,7 +51,7 @@ abstract class Request {
      *
      * @return array
      */
-    abstract public function getDefaultParams();    
+    abstract public function getDefaultParams();
 
     /**
      * Performs the actual request using methods implemented from extended classes
@@ -60,16 +60,12 @@ abstract class Request {
      * @throws \Exception
      */
     public function doRequest() {
-        try {
-            return $this->client->request($this->getMethod(), self::BASE_URL . $this->getPath(), [
-                'headers' => [
-                    'Authorization' => 'Bearer ' . $this->authentication->getToken(),
-                ],
-                'query' => $this->getParams(),
-            ]);
-        } catch(\Exception $e) {
-            throw $e;
-        }
+        return $this->client->request($this->getMethod(), self::BASE_URL . $this->getPath(), [
+            'headers' => [
+                'Authorization' => 'Bearer ' . $this->authentication->getToken(),
+            ],
+            'query' => $this->getParams(),
+        ]);
     }
 
     /**
